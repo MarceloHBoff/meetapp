@@ -3,13 +3,13 @@ import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import SignIn from '~/pages/SignIn';
-import SignUp from '~/pages/SignUp';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
-import Dashboard from '~/pages/Dashboard';
-import Detail from '~/pages/Detail';
-import Meetup from '~/pages/Meetup';
-import Profile from '~/pages/Profile';
+import Dashboard from '../pages/Dashboard';
+import Detail from '../pages/Detail';
+import Meetup from '../pages/Meetup';
+import Profile from '../pages/Profile';
 
 export default function Routes() {
   return (

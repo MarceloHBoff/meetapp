@@ -20,7 +20,7 @@ class Meetup extends Model {
       },
       {
         sequelize,
-      },
+      }
     );
     return this;
   }

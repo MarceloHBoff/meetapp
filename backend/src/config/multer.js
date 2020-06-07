@@ -3,7 +3,6 @@ import crypto from 'crypto';
 import { extname, resolve } from 'path';
 
 export default {
-  // Configura multer para converção da imagem
   storage: multer.diskStorage({
     destination: resolve(__dirname, '..', '..', 'tmp', 'uploads'),
     filename: (req, file, cb) => {

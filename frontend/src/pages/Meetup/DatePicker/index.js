@@ -37,6 +37,7 @@ export default function DatePicker({ name, placeholder }) {
         placeholderText={placeholder}
         autoComplete="off"
       />
+
       {error && <span>{error}</span>}
     </>
   );

@@ -23,9 +23,7 @@ export const Content = styled.div`
     -webkit-transition-delay: 9999s;
   }
 
-  h1 {
-    color: #f94d6a;
-    font-size: 50px;
+  img {
     margin-bottom: 20px;
   }
 
@@ -35,16 +33,19 @@ export const Content = styled.div`
     flex-direction: column;
 
     input {
+      height: 50px;
       color: #fff;
       border: 0;
       border-radius: 4px;
-      padding: 10px 15px;
-      margin-bottom: 5px;
+      padding: 15px 20px;
+      margin-bottom: 10px;
       background: ${darken(0.04, '#22202c')};
     }
 
     button {
+      height: 50px;
       border: 0;
+      margin-top: 15px;
       border-radius: 4px;
       font-weight: bold;
       color: #fff;

@@ -1,11 +1,11 @@
 {
-  "name": "MeetApp",
+  "name": "meetapp",
   "version": "1.0.0",
   "main": "index.js",
   "author": "MarceloHBoff <marceloboff20@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "rodar": "nodemon src/server.js",
+    "dev": "nodemon src/server.js",
     "queue": "nodemon src/queue.js"
   },
   "dependencies": {

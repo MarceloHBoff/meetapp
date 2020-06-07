@@ -12,7 +12,6 @@ class Queue {
   }
 
   init() {
-    // Percorre os jobs para inicializar a configuração do REGIS
     jobs.forEach(({ key, handle }) => {
       this.queues[key] = {
         bee: new Bee(key, {
@@ -23,20 +22,17 @@ class Queue {
     });
   }
 
-  // Adiciona jobs na fila de execução
   add(queue, job) {
     return this.queues[queue].bee.createJob(job).save();
   }
 
   processQueue() {
-    // Percorres os jobs adicionados para executalos
-    jobs.forEach((job) => {
+    jobs.forEach(job => {
       const { bee, handle } = this.queues[job.key];
       bee.on('failed', this.handleFailure).process(handle);
     });
   }
 
-  // Exibe o erro de execução do job
   handleFailure(job, err) {
     console.log(`Queue ${job.queue.name}: FAILED`, err);
   }

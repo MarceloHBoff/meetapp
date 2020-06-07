@@ -15,6 +15,7 @@ export const Container = styled.div`
     }
 
     button {
+      height: 40px;
       display: flex;
       align-items: center;
       max-width: 130px;

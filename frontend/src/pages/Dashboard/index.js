@@ -4,9 +4,10 @@ import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 import { format, parse } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
+import api from '../../services/api';
+import history from '../../services/history';
+
 import { Container, Meetups, Meetup } from './styles';
-import api from '~/services/api';
-import history from '~/services/history';
 
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
@@ -14,6 +15,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function loadMeetups() {
       const response = await api.get('meetup/user');
+
       const data = response.data.map(meetup => {
         return {
           ...meetup,
@@ -22,7 +24,7 @@ export default function Dashboard() {
             'D [de] MMMM[, ás] HH[h]mm[min]',
             {
               locale: pt,
-            }
+            },
           ),
         };
       });
@@ -36,17 +38,21 @@ export default function Dashboard() {
     <Container>
       <header>
         <h1>Meus meetup</h1>
+
         <button type="button" onClick={() => history.push('/meetup')}>
           <MdAddCircleOutline color="#fff" size={18} />
           Novo meetup
         </button>
       </header>
+
       <Meetups>
         {meetups.map(meetup => (
           <Meetup key={String(meetup.id)}>
             <strong>{meetup.title}</strong>
+
             <div>
               <span>{meetup.dateFormatted}</span>
+
               <Link to={`/detail/${meetup.id}`}>
                 <MdChevronRight color="#fff" size={20} />
               </Link>

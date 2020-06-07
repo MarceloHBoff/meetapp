@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 import { MdAddAPhoto } from 'react-icons/md';
 
-import api from '~/services/api';
+import api from '../../../services/api';
 
 import { Container } from './styles';
 
 export default function Banner() {
   const { defaultValue, registerField } = useField('File');
   const { error } = useField('banner_id');
+
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
@@ -27,11 +28,13 @@ export default function Banner() {
 
   async function handleChange(e) {
     const data = new FormData();
+
     data.append('file', e.target.files[0]);
 
     try {
       const response = await api.post('files', data);
       const { id, url } = response.data;
+
       setFile(id);
       setPreview(url);
     } catch (err) {
@@ -50,6 +53,7 @@ export default function Banner() {
             <span>Selecionar uma imagem</span>
           </div>
         )}
+
         <input
           type="file"
           id="File"
@@ -59,6 +63,7 @@ export default function Banner() {
           ref={ref}
         />
       </label>
+
       {error && <span>{error}</span>}
     </Container>
   );

@@ -1,17 +1,17 @@
 import { takeLatest, put, call, all } from 'redux-saga/effects';
-
 import { toast } from 'react-toastify';
-import api from '~/services/api';
+
+import api from '../../../services/api';
+
 import { updateProfileSuccess, updateProfileFailure } from './actions';
 
 export function* updateProfile({ payload }) {
   try {
-    console.tron.log(payload.data);
     const { name, email, ...rest } = payload.data;
 
     const profile = Object.assign(
       { name, email },
-      rest.oldPassword ? rest : {}
+      rest.oldPassword ? rest : {},
     );
 
     const response = yield call(api.put, 'users', profile);

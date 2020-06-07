@@ -5,6 +5,9 @@ import { format, parse } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import PropTypes from 'prop-types';
 
+import api from '../../services/api';
+import history from '../../services/history';
+
 import {
   Container,
   ButtonDelete,
@@ -12,8 +15,6 @@ import {
   Content,
   Information,
 } from './styles';
-import api from '~/services/api';
-import history from '~/services/history';
 
 export default function Detail({ match }) {
   const { id } = match.params;
@@ -23,6 +24,7 @@ export default function Detail({ match }) {
   useEffect(() => {
     async function loadMeetup() {
       const response = await api.get(`/meetup/${id}`);
+
       setMeetup({
         ...response.data,
         dateFormatted: format(
@@ -40,6 +42,7 @@ export default function Detail({ match }) {
   async function handleCancel(MeetupId) {
     try {
       await api.delete(`meetup/${MeetupId}`);
+
       toast.success('Meetup deletada com sucesso!');
 
       history.push('/dashboard');
@@ -56,6 +59,7 @@ export default function Detail({ match }) {
     <Container>
       <header>
         <h1>{meetup.title}</h1>
+
         <div>
           <ButtonEdit
             type="button"
@@ -64,20 +68,25 @@ export default function Detail({ match }) {
             <MdCreate color="#fff" size={18} />
             Editar
           </ButtonEdit>
+
           <ButtonDelete type="button" onClick={() => handleCancel(meetup.id)}>
             <MdDeleteForever color="#fff" size={18} />
             Cancelar
           </ButtonDelete>
         </div>
       </header>
+
       <Content>
         <img src={meetup.File && meetup.File.url} alt={meetup.title} />
+
         <p>{meetup.description}</p>
+
         <Information>
           <div>
             <MdEvent color="#fff" size={18} />
             <span>{meetup.dateFormatted}</span>
           </div>
+
           <div>
             <MdRoom color="#fff" size={18} />
             <span>{meetup.location}</span>

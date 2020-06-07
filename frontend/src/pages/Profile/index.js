@@ -4,8 +4,9 @@ import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
 import * as Yup from 'yup';
 
+import { updateProfileRequest } from '../../store/modules/user/actions';
+
 import { Container } from './styles';
-import { updateProfileRequest } from '~/store/modules/user/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Nome é obrigatório'),
@@ -16,12 +17,12 @@ const schema = Yup.object().shape({
   password: Yup.string().when('oldPassword', (oldPassword, field) =>
     oldPassword
       ? field.required().min(6, 'Necessário pelo menos 6 caracteres')
-      : field
+      : field,
   ),
   confirmPassword: Yup.string().when('oldPassword', (oldPassword, field) =>
     oldPassword
       ? field.required().min(6, 'Necessário pelo menos 6 caracteres')
-      : field
+      : field,
   ),
 });
 
@@ -38,7 +39,9 @@ export default function Profile() {
       <Form schema={schema} initialData={profile} onSubmit={handleSubmit}>
         <Input name="name" placeholder="Nome completo" />
         <Input name="email" type="email" placeholder="Seu email" />
+
         <hr />
+
         <Input
           name="oldPassword"
           type="password"
@@ -50,6 +53,7 @@ export default function Profile() {
           type="password"
           placeholder="Confirmação da nova senha"
         />
+
         <button type="submit">
           <MdAddCircleOutline color="#fff" size={18} />
           Salvar Perfil

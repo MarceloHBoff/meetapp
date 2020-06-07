@@ -5,8 +5,6 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
   * {
     margin: 0;
     padding: 0;

@@ -5,14 +5,14 @@ import { parse } from 'date-fns';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-
 import Loader from 'react-loader-spinner';
+
+import api from '../../services/api';
+import history from '../../services/history';
 
 import Banner from './Banner';
 import DatePicker from './DatePicker';
 import { Container, Loading } from './styles';
-import api from '~/services/api';
-import history from '~/services/history';
 
 const schema = Yup.object().shape({
   banner_id: Yup.number().required('Banner é obrigátorio'),
@@ -31,8 +31,10 @@ export default function Meetup({ match }) {
   useEffect(() => {
     async function loadMeetup(meetupId) {
       setLoading(true);
+
       try {
         const response = await api.get(`meetup/${meetupId}`);
+
         setMeetup({
           ...response.data,
           date: parse(response.data.date),
@@ -43,6 +45,7 @@ export default function Meetup({ match }) {
 
       setLoading(false);
     }
+
     if (id) {
       loadMeetup(id);
     }
@@ -58,11 +61,13 @@ export default function Meetup({ match }) {
           location: data.location,
           banner_id: data.banner_id,
         });
+
         toast.success('Meetup alterada com sucesso!');
+
         history.goBack();
       } catch (err) {
         toast.error(
-          err.response.data ? err.response.data.error : 'Connection error.'
+          err.response.data ? err.response.data.error : 'Connection error.',
         );
       }
     } else {
@@ -74,11 +79,13 @@ export default function Meetup({ match }) {
           location: data.location,
           banner_id: data.banner_id,
         });
+
         toast.success('Meetup criado com sucesso!');
+
         history.goBack();
       } catch (err) {
         toast.error(
-          err.response.data ? err.response.data.error : 'Connection error.'
+          err.response.data ? err.response.data.error : 'Connection error.',
         );
       }
     }
@@ -101,8 +108,10 @@ export default function Meetup({ match }) {
             rows="10"
             multiline
           />
+
           <DatePicker name="date" placeholder="Date" />
           <Input name="location" placeholder="Localização" />
+
           <button type="submit">
             <MdAddCircleOutline color="#fff" size={18} />
             Salvar Meetup

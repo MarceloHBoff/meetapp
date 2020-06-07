@@ -8,10 +8,8 @@ import mailConfig from '../config/mail';
 
 class Mail {
   constructor() {
-    const {
-      host, port, secure, auth,
-    } = mailConfig;
-    // Inicializa conexão de emails
+    const { host, port, secure, auth } = mailConfig;
+
     this.transporter = nodemailer.createTransport({
       host,
       port,
@@ -36,12 +34,11 @@ class Mail {
         }),
         viewPath,
         extName: '.hbs',
-      }),
+      })
     );
   }
 
   sendMail(message) {
-    // Envia o email com as informações padrão e também as personalizadas
     return this.transporter.sendMail({
       ...mailConfig.default,
       ...message,

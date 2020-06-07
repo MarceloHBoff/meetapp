@@ -19,20 +19,22 @@ export const Container = styled.div`
     margin-top: 30px;
 
     input {
+      height: 50px;
       color: #fff;
       border: 0;
       border-radius: 4px;
-      padding: 10px 15px;
+      padding: 15px 20px;
       margin-bottom: 10px;
       background: ${darken(0.04, '#22202c')};
     }
 
     hr {
       border-color: #999;
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     button {
+      height: 40px;
       display: flex;
       margin-left: auto;
       align-items: center;

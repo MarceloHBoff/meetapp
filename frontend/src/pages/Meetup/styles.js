@@ -23,14 +23,19 @@ export const Container = styled.div`
       color: #fff;
       border: 0;
       border-radius: 4px;
-      padding: 10px 15px;
+      padding: 15px 20px;
       margin-bottom: 10px;
       background: ${darken(0.04, '#22202c')};
+    }
+
+    input {
+      height: 50px;
     }
 
     .react-datepicker-wrapper {
       .react-datepicker__input-container {
         display: flex;
+
         input {
           flex-grow: 1;
         }
@@ -44,6 +49,7 @@ export const Container = styled.div`
     }
 
     > button {
+      height: 40px;
       display: flex;
       align-items: center;
       margin-left: auto;
