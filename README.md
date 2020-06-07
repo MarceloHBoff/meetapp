@@ -1,9 +1,9 @@
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=MeetApp&uri=https%3A%2F%2Fraw.githubusercontent.com%2FMarceloHBoff%2Fmeetapp%2Fmaster%2Finsomnia.json)
+
 <h2 align="center">
   <img src="./.github/assets/logo.svg" alt="Meetapp" />
   <div align="center">MeetApp</div>
 </h2>
-
----
 
 <h4 align="center">
   A FullStack application to create meetups and publish to people subscribe.
